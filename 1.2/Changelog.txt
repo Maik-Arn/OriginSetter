@@ -1,0 +1,4 @@
+Mehrfache add-UV Funktion implementiert
+Mehrfache remove-UV Funktion implementiert
+
+add-UV Funktion übernimmt die vorherige UV-Scalierung
