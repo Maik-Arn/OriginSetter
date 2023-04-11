@@ -1,5 +1,5 @@
 bl_info = {
-    "name": "Polipol Origin Macro",
+    "name": "Custom Origin Macro",
     "author": "Maik Arnold",
     "category": "Object",
     "blender": (2, 91, 0),
@@ -18,11 +18,11 @@ from mathutils import *
 )"""
 import sys
 
-
+# Give the UI Icons
 class VIEW3D_PT_giveAllUv(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'Polipol'
+    bl_category = 'Custom'
     bl_label = 'UV'
     bl_options = {'DEFAULT_CLOSED'}
     
@@ -37,10 +37,12 @@ class VIEW3D_PT_giveAllUv(bpy.types.Panel):
         
         self.layout.operator("object.dupenormal", text='Master normal duplizieren', icon='DOCUMENTS')
 
+        
+#Clear the UVMap
 class ClearUV(bpy.types.Operator):
     """UV für Export entfernen"""
     bl_idname = "object.clearuv"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -60,10 +62,11 @@ class ClearUV(bpy.types.Operator):
     
         return {'FINISHED'}
 
+#Remove unnecessary UVMaps
 class RemoveUV(bpy.types.Operator):
     """UV für Export entfernen"""
     bl_idname = "object.removeuv"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -76,10 +79,11 @@ class RemoveUV(bpy.types.Operator):
     
         return {'FINISHED'}
 
+#Give UVMap with appropriate syntax
 class GiveUV(bpy.types.Operator):
     """UV für Export hinzufuegen"""
     bl_idname = "object.adduv"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -93,20 +97,17 @@ class GiveUV(bpy.types.Operator):
 class DupeNormal(bpy.types.Operator):
     """Normal UV von Master auf Auswahl übertragen"""
     bl_idname = "object.dupenormal"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
-        
-        #Get MasterUV
-        #
     
         return {'FINISHED'} 
 
-class VIEW3D_PT_polipolTools(bpy.types.Panel):
+class VIEW3D_PT_customTools(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = 'Polipol'
+    bl_category = 'Custom'
     bl_label = 'Origin Setter'
     bl_options = {'DEFAULT_CLOSED'}
     
@@ -149,7 +150,7 @@ class VIEW3D_PT_polipolTools(bpy.types.Panel):
 class FLLCorner(bpy.types.Operator):
     """Origin für Export setzen"""
     bl_idname = "object.fllcorner"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -162,7 +163,7 @@ class FLLCorner(bpy.types.Operator):
         
         #Auswahl der Ecke
         
-        #3D Cursor auf die hintere untere linke Ecke setzen
+        #3D Cursor auf die vordere untere linke Ecke setzen
         bpy.context.scene.cursor.location = bbox_corners[0]
         
         #Origin auf den 3D Cursor setzen
@@ -187,7 +188,7 @@ class FULCorner(bpy.types.Operator):
         
         #Auswahl der Ecke
         
-        #3D Cursor auf die hintere untere linke Ecke setzen
+        #3D Cursor auf die vordere obere linke Ecke setzen
         bpy.context.scene.cursor.location = bbox_corners[1]
         
         #Origin auf den 3D Cursor setzen
@@ -199,7 +200,7 @@ class FULCorner(bpy.types.Operator):
 class BULCorner(bpy.types.Operator):
     """Origin für Export setzen"""
     bl_idname = "object.bulcorner"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -212,7 +213,7 @@ class BULCorner(bpy.types.Operator):
         
         #Auswahl der Ecke
         
-        #3D Cursor auf die hintere untere linke Ecke setzen
+        #3D Cursor auf die hintere obere linke Ecke setzen
         bpy.context.scene.cursor.location = bbox_corners[2]
         
         #Origin auf den 3D Cursor setzen
@@ -224,7 +225,7 @@ class BULCorner(bpy.types.Operator):
 class BLLCorner(bpy.types.Operator):
     """Origin für Export setzen"""
     bl_idname = "object.bllcorner"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -237,7 +238,7 @@ class BLLCorner(bpy.types.Operator):
         
         #Auswahl der Ecke
         
-        #3D Cursor auf die hintere untere linke Ecke setzen
+        #3D Cursor auf die vordere untere rechte Ecke setzen
         bpy.context.scene.cursor.location = bbox_corners[3]
         
         #Origin auf den 3D Cursor setzen
@@ -249,7 +250,7 @@ class BLLCorner(bpy.types.Operator):
 class FLRCorner(bpy.types.Operator):
     """Origin für Export setzen"""
     bl_idname = "object.flrcorner"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -262,7 +263,7 @@ class FLRCorner(bpy.types.Operator):
         
         #Auswahl der Ecke
         
-        #3D Cursor auf die hintere untere linke Ecke setzen
+        #3D Cursor auf die vordere obere rechte Ecke setzen
         bpy.context.scene.cursor.location = bbox_corners[4]
         
         #Origin auf den 3D Cursor setzen
@@ -274,7 +275,7 @@ class FLRCorner(bpy.types.Operator):
 class FURCorner(bpy.types.Operator):
     """Origin für Export setzen"""
     bl_idname = "object.furcorner"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -299,7 +300,7 @@ class FURCorner(bpy.types.Operator):
 class BURCorner(bpy.types.Operator):
     """Origin für Export setzen"""
     bl_idname = "object.burcorner"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -312,7 +313,7 @@ class BURCorner(bpy.types.Operator):
         
         #Auswahl der Ecke
         
-        #3D Cursor auf die hintere untere linke Ecke setzen
+        #3D Cursor auf die hintere obere rechte Ecke setzen
         bpy.context.scene.cursor.location = bbox_corners[6]
         
         #Origin auf den 3D Cursor setzen
@@ -324,7 +325,7 @@ class BURCorner(bpy.types.Operator):
 class BLRCorner(bpy.types.Operator):
     """Origin für Export setzen"""
     bl_idname = "object.blrcorner"
-    bl_label = "Polipol Origin Macro"
+    bl_label = "Custom Origin Macro"
     bl_options = {'REGISTER', 'UNDO'}
     
     def execute(self, context):
@@ -337,7 +338,7 @@ class BLRCorner(bpy.types.Operator):
         
         #Auswahl der Ecke
         
-        #3D Cursor auf die hintere untere linke Ecke setzen
+        #3D Cursor auf die hintere untere rechte Ecke setzen
         bpy.context.scene.cursor.location = bbox_corners[7]
         
         #Origin auf den 3D Cursor setzen
@@ -356,7 +357,7 @@ def register():
     bpy.utils.register_class(GiveUV)
     bpy.utils.register_class(DupeNormal)
     bpy.utils.register_class(VIEW3D_PT_giveAllUv)
-    bpy.utils.register_class(VIEW3D_PT_polipolTools)
+    bpy.utils.register_class(VIEW3D_PT_customTools)
     bpy.utils.register_class(FLLCorner)    
     bpy.utils.register_class(FULCorner)
     bpy.utils.register_class(BULCorner)
@@ -378,7 +379,7 @@ def unregister():
     bpy.utils.unregister_class(RemoveUV)
     bpy.utils.unregister_class(DupeNormal)
     bpy.utils.unregister_class(VIEW3D_PT_giveAllUv)
-    bpy.utils.unregister_class(VIEW3D_PT_polipolTools)
+    bpy.utils.unregister_class(VIEW3D_PT_customTools)
     bpy.utils.unregister_class(FLLCorner)    
     bpy.utils.unregister_class(FULCorner)
     bpy.utils.unregister_class(BULCorner)
@@ -398,34 +399,3 @@ def unregister():
 
 if __name__ == "__main__":
     register()
-
-
-
-
-"""
-bbox_lower_middle_corner_01 = bbox_corners[3]
-
-
-bbox_lower_middle_corner_02 = bbox_corners[7]
-
-bbox_lower_middle = bbox_lower_middle_corner_01 / bbox_lower_middle_corner_02
-
-
-bpy.context.scene.cursor.location = bbox_lower_middle
-
-
-
-  
-#Um mehrere Objekte zu ändern müssen diese in einen Array gesetzt werden und daraus sortiert
-
-"""
-
-
-
-"""
-# store keymaps here to access after registration
-
-
-
-
-"""
